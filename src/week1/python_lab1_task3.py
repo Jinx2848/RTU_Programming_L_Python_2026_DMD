@@ -33,6 +33,13 @@ Examples (these are also used to check your work):
 def analyze_sentence(text: str) -> tuple[int, int, bool]:
     """Return (length, word count, contains 'python') for the given text."""
     # TODO: implement function logic
+    length = len(text)
+    words = len(text.split())
+    a = text.lower()
+    b = False
+    if a.count("python") > 0:
+        b = True
+    return length, words, b
     raise NotImplementedError("analyze_sentence() is not implemented yet")
 
 
@@ -40,4 +47,9 @@ if __name__ == "__main__":
     # Keep all input() calls inside this block, otherwise the autograder
     # cannot import your file.
     # TODO: read sentence from input, call function, and print results
+    text = input("Enter a sentence: ")
+    x = analyze_sentence(text)
+    print("Characters: ", x[0])
+    print("Words: ", x[1])
+    print("Contains 'Python': ", x[2])
     pass
