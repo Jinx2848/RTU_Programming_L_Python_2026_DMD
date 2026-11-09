@@ -60,18 +60,24 @@ QUANTITIES = [2, 5, 1, 3, 4]
 def item_totals(prices: list[float], quantities: list[int]) -> list[float]:
     """Return price * quantity for each item, using map() and a lambda."""
     # TODO: implement with map()
+    totalPrice = map(lambda p, q: p * q, prices, quantities)
+    return list(totalPrice)
     raise NotImplementedError("item_totals() is not implemented yet")
 
 
 def filter_above(totals: list[float], threshold: float = 30) -> list[float]:
     """Return totals greater than threshold, using filter() and a lambda."""
     # TODO: implement with filter()
+    aboveThirty = filter(lambda x: x > threshold, totals)
+    return list(aboveThirty)
     raise NotImplementedError("filter_above() is not implemented yet")
 
 
 def pair_up(prices: list[float], quantities: list[int]) -> list[tuple]:
     """Return a list of (price, quantity) tuples, using zip()."""
     # TODO: implement with zip()
+    paired = zip(prices, quantities)
+    return list(paired)
     raise NotImplementedError("pair_up() is not implemented yet")
 
 
@@ -80,12 +86,19 @@ def pair_up(prices: list[float], quantities: list[int]) -> list[tuple]:
 def item_totals_comp(prices: list[float], quantities: list[int]) -> list[float]:
     """Same as item_totals(), but with a list comprehension."""
     # TODO: implement with a list comprehension
+    totalPrice = [p * q for p, q in zip(prices, quantities)]
+    return totalPrice
     raise NotImplementedError("item_totals_comp() is not implemented yet")
 
 
 def filter_above_comp(totals: list[float], threshold: float = 30) -> list[float]:
     """Same as filter_above(), but with a list comprehension."""
     # TODO: implement with a list comprehension
+    overThirty = []
+    for x in totals:
+        if x > threshold:
+            overThirty.append(x)
+    return overThirty
     raise NotImplementedError("filter_above_comp() is not implemented yet")
 
 
@@ -93,4 +106,9 @@ if __name__ == "__main__":
     # Keep all input() and print() calls inside this block, otherwise the
     # autograder cannot import your file.
     # TODO: call every function with PRICES and QUANTITIES and print results
+    print(item_totals(PRICES, QUANTITIES))
+    print(filter_above(item_totals(PRICES, QUANTITIES)))
+    print(pair_up(PRICES, QUANTITIES))
+    print(item_totals_comp(PRICES, QUANTITIES))
+    print(filter_above_comp(item_totals(PRICES, QUANTITIES)))
     pass
